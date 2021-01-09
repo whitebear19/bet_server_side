@@ -218,7 +218,7 @@ def set_driver():
     service.start()
     option = webdriver.ChromeOptions()
     option.add_argument("--window-size=1200,600")
-    # option.add_argument("--headless")
+    option.add_argument("--headless")
     driver = webdriver.Chrome(path+"/chromedriver",options = option) 
     url = 'https://vb.rebelbetting.com/'
     driver.get(url)
