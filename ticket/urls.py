@@ -14,5 +14,5 @@ urlpatterns = [
     path('delete',view=views.delete, name='delete'),   
     path('ischecklicense',view=views.ischecklicense, name='ischecklicense'),   
     path('get_stake',view=views.get_stake, name='get_stake'),
-    path('start',view=views.start, name='start'),
+    # path('start',view=views.start, name='start'),
 ]
