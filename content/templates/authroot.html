@@ -14,14 +14,293 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"> -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">    
     <link rel="stylesheet" type="text/css" href="{% static 'css/intlTelInput.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}">
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>    
     <script type="text/javascript" src="{% static 'js/intlTelInput.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/sweetalert2.js' %}"></script>
+    <style>
+        .forgot-bg, .login-bg, .register-bg {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-image: url(../images/star-sky.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 9;
+        }
+
+        .forgot-bg-inner, .login-bg-inner, .register-bg-inner {
+            padding: 40px 0px;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            background: rgba(0, 0, 0, .45);
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .forgot-sidebar, .login-sidebar, .register-sidebar {
+            padding: 40px;
+            width: 400px;
+            margin: 40px auto;
+        }
+
+        .forgot-sidebar h2, .login-sidebar h2, .register-sidebar h2 {
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            padding-top: 0px;
+        }
+
+        .form_custom_field {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid;
+            border-radius: 0px;
+            outline: none!important;
+            box-shadow: none!important;
+        }
+
+        button{
+            outline: none!important;
+            box-shadow: none!important;
+
+        }
+        /* auth_page */
+        .process-comm{
+            position: fixed;
+            z-index: 999;
+            width: 100%;    
+            height: 100vh;
+            background-color: rgb(251 247 247 / 0.25);    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .alertborder {
+            border-color: #ee0000!important;
+        }
+
+        .alert_txt {
+            color: #ee0000;
+            margin-top: 10px;
+            display: none;
+        }
+        .btn-sel-gender
+        {
+            position: relative;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-family: Poppins-Regular;
+            font-size: 0.9rem;
+            padding: 6px 0px 6px 20px;
+            width: 100%;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            height: 38px;
+        }
+        .btn-sel-gender input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .btn-sel-gender input:checked ~ .checkround_user {
+            background-color: #40c229;
+            border-color: #32aa1d;
+            transition: 0.8s;
+        }
+        .checkround_user {
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            height: 15px;
+            width: 15px;
+            background-color: #dedede;
+            border-color: #d0d0d0;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 50%;
+        }
+        .radio_txt{
+            font-size: 14px;
+            line-height: 24px;
+            margin-left: 2px;
+            font-family: arial;
+        }
+
+        .btn_switch_email_phone
+        {
+            background-color: transparent;
+            color: #357ebd;
+            border: none;
+            padding: 0px;
+            font-weight: 600;
+            transition: 0.5s;
+            outline: none!important;
+            box-shadow: none!important;
+        }
+        .btn_switch_email_phone:hover
+        {
+            background-color: transparent;
+            color: #155892;
+            border: none;
+            padding: 0px;
+            font-weight: 600;
+        }
+        .form_warp_email{
+            
+        }
+
+        /* home */
+        .selected_nav{
+            color: #63f924;
+        }
+        .btn_ticket{
+            border: 1px solid #b7b5b5;
+            padding: 5px 10px;
+            font-weight: 600;
+        }
+        .header_ticket h3{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .body_ticket{
+            margin-top: 20px;
+            border: 1px solid #dedede;
+            padding: 15px;   
+        }
+        .text-red{
+            color: rgb(214, 60, 33);
+        }
+        .text-green{
+            color: #32aa1d;
+        }
+        .text-blue
+        {
+            color: #00557d;
+        }
+        .btn_blue{
+            background-color: #00557d;
+            color: #fff;
+            border: 1px solid #00557d;
+            outline: none!important;
+            box-shadow: none!important;
+            background-color: #00557d;
+            color: #fff;
+            font-weight: 600;
+            transition: 0.35s;
+        }
+        .btn_blue:hover{    
+            background-color:transparent;
+            color: #00557d;    
+        }
+
+        .btn_transparent{
+            border: none;
+            background-color: transparent;
+            box-shadow: none!important;
+            outline: none!important;
+        }
+
+        .process-comm {
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(243 243 243 / 44%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .lh-35{
+            line-height: 35px;
+        }
+        .logo {
+            float: left;
+            width: auto;
+            margin-right: 14px;
+            margin-top: 8px;
+            color: white!important;
+            line-height: 25px;
+        }
+        .logo a{    
+            color: white!important;    
+        }
+        thead tr td{
+            font-weight: 600;
+        }
+        tbody tr td{
+            text-align: center;
+        }
+
+        /* ------------pagenation---------- */
+        .Pagination {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0;
+        }
+        .Pagination-item {
+            display: inline-block;
+            margin-left:-1px;
+        }
+        .Pagination-link {
+            float: left;
+            padding-right: 16px;
+            padding-left: 16px;
+            border-radius: 0;
+            border-left: 0;
+        }
+        .btn {
+            background: -webkit-linear-gradient(top,#fff 0,#F0F0F0 100%);
+            background: linear-gradient(to bottom,#fff 0,#F0F0F0 100%);
+            border: 1px solid #BEC0C2;
+            color: #4D525B;
+            font-weight: 700;
+            text-shadow: 0 -1px transparent;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-size: .875rem;
+            background-clip: border-box;
+            border-radius: 0;
+            cursor: pointer;
+            display: inline-block;
+            -webkit-font-smoothing: antialiased;
+            line-height: 18px;
+            text-align: center;
+        }
+        .Pagination-link.is-active, .Pagination-link.paginate_active, .Pagination-link:active {
+            border-color: #139ff0;
+            color: #fff!important;
+            background: #139ff0!important;
+            box-shadow: inset 0 2px 3px rgba(14,23,36,.1);
+        }
+        #bottom-pagination{margin:10px auto;}
+
+        /* auth */
+
+        .btn_login
+        {
+            background: #0c80c3;
+            color: white;
+            border: 1px solid #0c80c3;
+        }
+    </style>
 </head>
 
 <body>
